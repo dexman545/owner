@@ -72,6 +72,20 @@ public interface Accessible extends Config {
     void store(OutputStream out, String comments) throws IOException;
 
     /**
+     * Stores the underlying properties into an {@link java.io.OutputStream}.
+     * <p>
+     * Notice that method {@link java.util.Properties#store(java.io.Writer, String)} is not implemented since it's not
+     * available in JDK 1.5 (while the target of this library is Java 1.5+).
+     *
+     * @param out      an output stream.
+     * @param comments a description of the property list.
+     * @throws IOException if writing this property list to the specified output stream throws an <code>IOException</code>.
+     * @see java.util.Properties#store(java.io.OutputStream, String)
+     * @since 1.0.4
+     */
+    void sortedStore(OutputStream out, String comments) throws IOException;
+
+    /**
      * Fills the given {@link java.util.Map} with the properties contained by this object. <br>
      * This is useful to extract the content of the config object into a {@link java.util.Map}.
      * <p>
