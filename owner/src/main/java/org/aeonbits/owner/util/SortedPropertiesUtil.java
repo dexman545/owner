@@ -12,7 +12,8 @@ import java.util.*;
 public class SortedPropertiesUtil extends Properties {
 
     public SortedPropertiesUtil(Properties properties){
-        entrySet().addAll(properties.entrySet());
+        this.clear();
+        this.putAll(properties);
     }
 
     @Override
