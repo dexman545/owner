@@ -10,6 +10,11 @@ import java.util.*;
  * https://stackoverflow.com/questions/10275862/how-to-sort-properties-in-java/55957344#55957344
  */
 public class SortedPropertiesUtil extends Properties {
+
+    public SortedPropertiesUtil(Properties properties){
+        entrySet().addAll(properties.entrySet());
+    }
+
     @Override
     public void store(OutputStream out, String comments) throws IOException {
         Properties sortedProps = new Properties() {

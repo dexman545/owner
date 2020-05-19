@@ -427,7 +427,7 @@ class PropertiesManager implements Reloadable, Accessible, Mutable {
     public void sortedStore(OutputStream out, String comments) throws IOException {
         readLock.lock();
         try {
-            ((SortedPropertiesUtil)properties).store(out, comments);
+            (new SortedPropertiesUtil(properties)).store(out, comments);
         } finally {
             readLock.unlock();
         }
