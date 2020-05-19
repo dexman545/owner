@@ -11,6 +11,7 @@ package org.aeonbits.owner;
 import org.aeonbits.owner.crypto.Decryptor;
 import org.aeonbits.owner.crypto.IdentityDecryptor;
 import org.aeonbits.owner.event.*;
+import org.aeonbits.owner.util.SortedPropertiesUtil;
 import org.aeonbits.owner.util.Util;
 
 import java.beans.PropertyChangeEvent;
@@ -417,6 +418,16 @@ class PropertiesManager implements Reloadable, Accessible, Mutable {
         readLock.lock();
         try {
             properties.store(out, comments);
+        } finally {
+            readLock.unlock();
+        }
+    }
+
+    @Delegate
+    public void storeSorted(OutputStream out, String comments) throws IOException {
+        readLock.lock();
+        try {
+            ((SortedPropertiesUtil)properties).store(out, comments);
         } finally {
             readLock.unlock();
         }
